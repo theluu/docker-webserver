@@ -16,7 +16,9 @@
         {{ __('Skip to content', 'sage') }}
       </a>
 
-      @include('sections.header')
+      @if(empty($hideHeaderFooter))
+        @include('sections.header')
+      @endif
 
       <main id="main" class="main">
         @yield('content')
@@ -28,7 +30,9 @@
         </aside>
       @endif
 
-      @include('sections.footer')
+      @if(empty($hideHeaderFooter))
+        @include('sections.footer')
+      @endif
     </div>
 
     @php(do_action('get_footer'))

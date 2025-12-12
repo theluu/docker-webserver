@@ -1,3 +1,4 @@
+@php($hideHeaderFooter = true)
 @extends('layouts.app')
 
 @section('content')

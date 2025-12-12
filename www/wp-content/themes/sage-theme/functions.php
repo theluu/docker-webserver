@@ -58,7 +58,3 @@ collect(['setup', 'filters'])
             );
         }
     });
-
-add_action('acorn/init', function () {
-    require_once get_theme_file_path('routes/web.php');
-});

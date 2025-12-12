@@ -153,3 +153,23 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+add_action('init', function () {
+    add_rewrite_rule(
+        '^live-score/?$',
+        'index.php?live_score=1',
+        'top'
+    );
+});
+
+add_filter('query_vars', function ($vars) {
+    $vars[] = 'live_score';
+    return $vars;
+});
+
+add_action('template_redirect', function () {
+    if (get_query_var('live_score')) {
+        echo \Roots\view('live-score')->render();
+        exit;
+    }
+});

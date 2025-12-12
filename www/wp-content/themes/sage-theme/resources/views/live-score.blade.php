@@ -1,6 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .live-dot { animation: pulse 2s infinite; }
+    .minute-pulse { animation: pulse 1.5s infinite; font-weight:900 !important; }
+    .club-badge {
+      width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 9999px;
+      box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+      background-color: #fff;
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
   <div class="max-w-5xl mx-auto mt-6">
 
     <!-- Tabs -->

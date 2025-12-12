@@ -7,7 +7,9 @@
 1. Vào thư mục: cd docker-webserver<br/>
 2. Build và chạy: docker-compose up -d --build<br/>
 3. Truy cập: http://localhost:8000 (website), http://localhost:8080 (phpMyAdmin)<br/>
-4. Truy cập http://localhost:8000/live-score/ để check kết quả, nếu lỗi hãy update như sau:<br/>
+   a. Install wordpress<br/>
+   b. Active theme Sage<br/><br/>
+5. Truy cập http://localhost:8000/live-score/ để check kết quả, nếu lỗi hãy update như sau:<br/>
    a. rm -rf www/wp-content/cache/acorn/framework/views/*<br/>
    b. Save http://localhost:8000/wp-admin/options-permalink.php<br/>
    c. Nếu ko có style của taildwincss update các lệnh sau:<br/><br/>
@@ -16,5 +18,5 @@
      - nvm install 20
      - nvm use 20
      - yarn install
-     - yarn build<br/>
+     - yarn build<br/><br/>
 6. Tắt: docker-compose down

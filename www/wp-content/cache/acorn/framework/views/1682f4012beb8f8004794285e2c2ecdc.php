@@ -1,2 +1,0 @@
-<?php echo $__env->make('partials.live-score', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
-<?php /**PATH /var/www/html/wp-content/themes/sage-theme/resources/views/page-live-score.blade.php ENDPATH**/ ?>

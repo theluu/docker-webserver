@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SoccerMatch extends Model
 {
-    protected $table = 'soccer_matches';
+    protected $table = 'soccer_matches';  // <<< THÊM DÒNG NÀY (QUAN TRỌNG NHẤT)
     public $incrementing = false;
     protected $keyType = 'string';
     protected $fillable = [

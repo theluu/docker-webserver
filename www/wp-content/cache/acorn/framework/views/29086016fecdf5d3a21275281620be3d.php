@@ -1,7 +1,7 @@
-@php($hideHeaderFooter = true)
-@extends('layouts.app')
+<?php ($hideHeaderFooter = true); ?>
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -33,13 +33,13 @@
         <button data-tab="all" class="tab-btn px-8 py-2.5 text-gray-600 hover:bg-gray-50">Tất cả</button>
         <button data-tab="live" class="tab-btn px-8 py-2.5 bg-red-600 text-white flex items-center gap-2 rounded-md">
           <span class="w-3 h-3 bg-white rounded-full live-dot"></span>
-          Trực tiếp ({{ isset($liveMatches) && $liveMatches->count() ? $liveMatches->count() : 0 }})
+          Trực tiếp (<?php echo e(isset($liveMatches) && $liveMatches->count() ? $liveMatches->count() : 0); ?>)
         </button>
         <button data-tab="finished" class="tab-btn px-8 py-2.5 text-gray-600 hover:bg-gray-50">
-          Đã kết thúc ({{ isset($finishedMatches) && $finishedMatches->count() ? $finishedMatches->count() : 0 }})
+          Đã kết thúc (<?php echo e(isset($finishedMatches) && $finishedMatches->count() ? $finishedMatches->count() : 0); ?>)
         </button>
         <button data-tab="schedule" class="tab-btn px-8 py-2.5 text-gray-600 hover:bg-gray-50">
-          Lịch thi đấu ({{ isset($scheduleMatches) && $scheduleMatches->count() ? $scheduleMatches->count() : 0 }})
+          Lịch thi đấu (<?php echo e(isset($scheduleMatches) && $scheduleMatches->count() ? $scheduleMatches->count() : 0); ?>)
         </button>
       </div>
       <label class="flex items-center gap-3 cursor-pointer select-none pr-4">
@@ -62,56 +62,61 @@
       <div class="border-b border-gray-200">
         <div class="flex items-center gap-3 px-5 py-3 bg-gray-50">
           <i class="far fa-star text-gray-400 hover:text-yellow-500 cursor-pointer"></i>
-          {{-- Động: logo flag và tên giải nếu có --}}
-          @if(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->competition->country->logo))
-            <img src="{{ str_replace(['w320','w640'], '16x12', $liveMatches[0]->competition->country->logo) }}"
+          
+          <?php if(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->competition->country->logo)): ?>
+            <img src="<?php echo e(str_replace(['w320','w640'], '16x12', $liveMatches[0]->competition->country->logo)); ?>"
                   class="w-5 h-4" alt="">
-          @else
+          <?php else: ?>
             <img src="https://flagcdn.com/16x12/dz.png" class="w-5 h-4" alt="">
-          @endif
+          <?php endif; ?>
           <span class="font-semibold">
-            {{ isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->competition->name)
+            <?php echo e(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->competition->name)
                   ? $liveMatches[0]->competition->name
-                  : 'Algeria: Giải bóng đá nữ' }}
+                  : 'Algeria: Giải bóng đá nữ'); ?>
+
           </span>
         </div>
-        {{-- Tỉ số, tên đội động, còn lại giữ nguyên --}}
+        
         <div class="px-5 py-4 hover:bg-gray-50 border-b border-dashed">
           <div class="flex items-center">
             <i class="far fa-star text-gray-400 hover:text-yellow-500 cursor-pointer w-8 text-center"></i>
             <div class="w-14 text-gray-500">
-              {{ isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->match_time)
-                    ? date('H:i', $liveMatches[0]->match_time) : '16:00' }}
+              <?php echo e(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->match_time)
+                    ? date('H:i', $liveMatches[0]->match_time) : '16:00'); ?>
+
             </div>
             <div class="w-14 text-red-600 minute-pulse text-center">
-              {{ rand(1,90) }}'
+              <?php echo e(rand(1,90)); ?>'
             </div>
             <div class="flex-1 flex justify-between items-center">
               <div class="flex items-center gap-3">
                 <span class="font-medium">
-                  {{ isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->homeTeam->name)
-                        ? $liveMatches[0]->homeTeam->name : 'CLB nữ Akbou' }}
+                  <?php echo e(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->homeTeam->name)
+                        ? $liveMatches[0]->homeTeam->name : 'CLB nữ Akbou'); ?>
+
                 </span>
-                @if(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->homeTeam->logo))
-                  <div class="club-badge"><img src="{{ $liveMatches[0]->homeTeam->logo }}" class="w-full h-full object-contain"></div>
-                @else
+                <?php if(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->homeTeam->logo)): ?>
+                  <div class="club-badge"><img src="<?php echo e($liveMatches[0]->homeTeam->logo); ?>" class="w-full h-full object-contain"></div>
+                <?php else: ?>
                   <div class="club-badge"><img src="https://via.placeholder.com/64/4F46E5/fff?text=A" class="w-full h-full object-contain"></div>
-                @endif
+                <?php endif; ?>
               </div>
               <div class="text-2xl font-black mx-8">
-                {{ isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->home_scores, $liveMatches[0]->away_scores)
+                <?php echo e(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->home_scores, $liveMatches[0]->away_scores)
                       ? (json_decode($liveMatches[0]->home_scores, true)['current'] ?? 1) . '-' . (json_decode($liveMatches[0]->away_scores, true)['current'] ?? 0)
-                      : '1-0' }}
+                      : '1-0'); ?>
+
               </div>
               <div class="flex items-center gap-3">
-                @if(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->awayTeam->logo))
-                  <div class="club-badge"><img src="{{ $liveMatches[0]->awayTeam->logo }}" class="w-full h-full object-contain"></div>
-                @else
+                <?php if(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->awayTeam->logo)): ?>
+                  <div class="club-badge"><img src="<?php echo e($liveMatches[0]->awayTeam->logo); ?>" class="w-full h-full object-contain"></div>
+                <?php else: ?>
                   <div class="club-badge"><img src="https://via.placeholder.com/64/DC2626/fff?text=R"></div>
-                @endif
+                <?php endif; ?>
                 <span>
-                  {{ isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->awayTeam->name)
-                        ? $liveMatches[0]->awayTeam->name : 'Afak Relizane(w)' }}
+                  <?php echo e(isset($liveMatches) && $liveMatches->count() && isset($liveMatches[0]->awayTeam->name)
+                        ? $liveMatches[0]->awayTeam->name : 'Afak Relizane(w)'); ?>
+
                 </span>
               </div>
             </div>
@@ -208,4 +213,5 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('schedule').innerHTML;
 });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /var/www/html/wp-content/themes/sage-theme/resources/views/live-score.blade.php ENDPATH**/ ?>

@@ -24,7 +24,7 @@ for ($i=0; $i < 10; $i++) {
         'updated_at' => date('Y-m-d H:i:s'),
     ];
 }
-DB::table('soccer_countries')->insert($countries);
+DB::table('wp_soccer_countries')->insert($countries);
 
 // 2. Seed soccer_competitions (10 competitions):
 $competitions = [];
@@ -37,7 +37,7 @@ for ($i=0; $i < 10; $i++) {
         'updated_at' => date('Y-m-d H:i:s'),
     ];
 }
-DB::table('soccer_competitions')->insert($competitions);
+DB::table('wp_soccer_competitions')->insert($competitions);
 
 // 3. Seed soccer_teams (10 teams, random country & competition):
 $team_rows = [];
@@ -54,7 +54,7 @@ for ($i=0; $i < 10; $i++) {
         'updated_at'     => date('Y-m-d H:i:s'),
     ];
 }
-DB::table('soccer_teams')->insert($team_rows);
+DB::table('wp_soccer_teams')->insert($team_rows);
 
 // 4. Seed soccer_matches (10 matches, random team, competition):
 foreach ($team_rows as $t) $team_ids[] = $t['id'];
@@ -66,7 +66,7 @@ for ($i=0; $i < 10; $i++) {
     } while ($home == $away);
 
     $competition_id = get_random($comp_ids);
-    DB::table('soccer_matches')->insert([
+    DB::table('wp_soccer_matches')->insert([
         'id'             => $faker->uuid,
         'competition_id' => $competition_id,
         'home_team_id'   => $home,

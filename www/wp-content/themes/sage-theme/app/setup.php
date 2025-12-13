@@ -169,7 +169,9 @@ add_filter('query_vars', function ($vars) {
 
 add_action('template_redirect', function () {
     if (get_query_var('live_score')) {
-        echo \Roots\view('live-score')->render();
+        // echo \Roots\view('live-score')->render();
+        $controller = new \App\Http\Controllers\LiveScoreController();
+        echo $controller->index(); // Sage sẽ tự handle return view()
         exit;
     }
 });

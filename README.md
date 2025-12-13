@@ -41,5 +41,6 @@
      - nvm install 20
      - nvm use 20
      - yarn install
-     - yarn build<br/><br/>
+     - yarn build<br/>
+   d. Kết quả: https://prnt.sc/UB8IJe9J3Tr_ <br/><br/>
 8. Tắt: docker-compose down

@@ -8,7 +8,8 @@
 2. Build và chạy: docker-compose up -d --build<br/>
 3. Truy cập: http://localhost:8000 (website), http://localhost:8080 (phpMyAdmin)<br/>
    a. Install wordpress<br/>
-   b. Active theme Sage<br/><br/>
+   b. Install save theme in root theme folder: composer create-project roots/sage sage-theme<br/>
+   c. Active theme Sage<br/><br/>
 4. Import 4 tables vào database<br/>
    a. Create www/file soccer_tables.sql file<br/>
    b. Truy cập: http://localhost:8080<br/>
